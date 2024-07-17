@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <Header></Header>
-    <nav><el-button>Default</el-button>
+    <nav>
+      <el-button>Default</el-button>
       <el-button type="primary">Primary</el-button>
       <el-button type="success">Success</el-button>
     </nav>
@@ -20,19 +21,23 @@ import Header from "./components/common/Header.vue"
 <style scoped lang="less">
 .container {
   margin: 0 auto;
-
+  min-width: 375px;
+  max-width: 1920px;
+  margin: 0 auto;
   nav {
     background: skyblue;
-    height: 300px;
+    height: 3.75rem;
   }
 
   .queryTotalGood {
     width: 90%;
     background-color: rgb(26, 248, 122);
-    height: 30px;
-    line-height: 30px;
+    height: .5rem;
+    line-height: .5rem;
     text-align: center;
-    margin: 10px auto 50px;
+    font-size:12px;
+    color: #fff;
+    margin: .125rem auto .625rem;
   }
 }
 </style>

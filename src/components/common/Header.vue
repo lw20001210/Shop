@@ -24,31 +24,36 @@ import logoPng from "../../assets/logos/logo.jpg";
   position: sticky;
   top: 0;
   color: red;
-  height: 90px;
+  height: 1.125rem;
   background-color: pink;
   display: flex;
-  padding: px 10%;
+  padding: 0 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   .left,
-  .right {
+  .right,.center {
     flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
 
   .left {
     text-align: right;
-
+    
     .logoImg {
       object-fit: cover;
-      width: 70px;
+      width: .875rem;
+      height:.875rem;
       border-radius: 50%;
     }
   }
 
   .center {
     flex: 8;
+    height: 100%;
   }
 }
 </style>
