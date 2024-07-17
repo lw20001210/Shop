@@ -3,15 +3,18 @@
     <div class="left">
       <img class="logoImg" :src="logoPng" alt="" />
     </div>
-    <div class="center">中
+    <div class="center">
+      <div class="routerTab" @click="changeTab(index)" v-for="(item,index) in routerKeys" :key="item.id" :class="{routerActive:index==activeIndex}">
+         <div class="routerItem">
+          {{ item.text }}
+         </div>
+      </div>
     </div>
-    <div class="right">
-      <el-input
-        placeholder="关键词"
-        v-model="inputContent"
-        class="input-with-select"
-      >
-      <template #append><el-icon><Search /></el-icon></template>
+    <div class="right" :class="{ active: focusFlag }">
+      <el-input placeholder="关键词" v-model="inputContent" class="input-with-select" @focus="inputFocu" @blur="inputBlur">
+        <template #append><el-icon>
+            <Search />
+          </el-icon></template>
       </el-input>
     </div>
   </div>
@@ -21,6 +24,23 @@
 import { ref } from 'vue';
 import logoPng from "../../assets/logos/logo.jpg";
 let inputContent = ref('');
+let activeIndex=ref(0);
+let focusFlag = ref(false);
+let routerKeys=ref([
+  {id:1,text:'首页'},
+  {id:1,text:'成品分类'},
+  {id:1,text:'共享软件'},
+  {id:1,text:'问题/教程'},
+])
+const inputFocu = () => {
+  focusFlag.value = true;
+}
+const inputBlur = () => {
+  focusFlag.value = false;
+}
+const changeTab=(index:number)=>{
+  activeIndex.value=index
+}
 </script>
 
 <style lang="less" scoped>
@@ -37,8 +57,9 @@ let inputContent = ref('');
   align-items: center;
 
   .left,
-  .right,.center {
-    flex: 2;
+  .right,
+  .center {
+    flex: 1;
     height: 100%;
     display: flex;
     align-items: center;
@@ -46,25 +67,56 @@ let inputContent = ref('');
 
   .left {
     text-align: right;
-    
+
     .logoImg {
       object-fit: cover;
       width: .875rem;
-      height:.875rem;
+      height: .875rem;
       border-radius: 50%;
     }
   }
-  .right{
-    flex:3;
-    .input-with-select{
+
+  .right {
+    flex: 1;
+    transition: all .3s;
+    .input-with-select {
       background: #e6e6e6;
-      height:.4375rem;
+      height: .5rem;
     }
+
+    :deep(.el-input-group__append, .el-input-group__prepend) {
+      padding: 0 .1875rem;
+    }
+    :deep(.el-input__inner){
+      font-size:.2rem;
+    }
+  }
+
+  .active {
+    flex: 3;
   }
 
   .center {
     flex: 5;
-    height: 100%;
+    font-size:.1875rem;
+    color: black;
+    border-left: 1px solid #ccc;
+    .routerTab{
+      margin-left: .25rem;
+      height:1.0625rem;
+      line-height: 1.0625rem;
+      border-bottom: 2px solid transparent;
+    }
+    .routerItem{
+      padding: 0 .25rem;
+    }
+    .routerItem:hover{
+      color: #409eff;
+    }
+    .routerActive{
+      border-color: #409eff;
+      color: #409eff;
+    }
   }
 }
 </style>

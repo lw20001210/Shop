@@ -1,10 +1,12 @@
 <template>
   <div class="container">
     <Header></Header>
+    <RouterView></RouterView>
     <nav>
       <h1>搜一搜♢你想找的♢持续更新</h1>
       <div class="searchBox">
         <el-input class="search" placeholder="请输入内容" v-model="inputText" clearable>
+          <template #append><el-icon><Search /></el-icon></template>
         </el-input>
       </div>
     </nav>
@@ -20,6 +22,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Header from "./components/common/Header.vue";
+import { RouterView } from 'vue-router';
 let inputText = ref('');
 
 </script>
