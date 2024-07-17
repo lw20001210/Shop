@@ -3,11 +3,12 @@
     <div class="left">
       <img class="logoImg" :src="logoPng" alt="" />
     </div>
-    <div class="center">
-      <div class="routerTab" @click="changeTab(index)" v-for="(item,index) in routerKeys" :key="item.id" :class="{routerActive:index==activeIndex}">
-         <div class="routerItem">
+    <div class="center" v-if="screenWidthFlag">
+      <div class="routerTab" @click="changeTab(index)" v-for="(item, index) in routerKeys" :key="item.id"
+        :class="{ routerActive: index == activeIndex }">
+        <div class="routerItem">
           {{ item.text }}
-         </div>
+        </div>
       </div>
     </div>
     <div class="right" :class="{ active: focusFlag }">
@@ -21,16 +22,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watchEffect, onMounted, onUnmounted } from 'vue';
 import logoPng from "../../assets/logos/logo.jpg";
 let inputContent = ref('');
-let activeIndex=ref(0);
+let activeIndex = ref(0);
 let focusFlag = ref(false);
-let routerKeys=ref([
-  {id:1,text:'首页'},
-  {id:1,text:'成品分类'},
-  {id:1,text:'共享软件'},
-  {id:1,text:'问题/教程'},
+let screenWidth = ref(0)//屏幕尺寸
+let screenWidthFlag = ref(false);//是否显示路由导航
+
+let routerKeys = ref([
+  { id: 1, text: '首页' },
+  { id: 1, text: '成品分类' },
+  { id: 1, text: '共享软件' },
+  { id: 1, text: '问题/教程' },
 ])
 const inputFocu = () => {
   focusFlag.value = true;
@@ -38,9 +42,27 @@ const inputFocu = () => {
 const inputBlur = () => {
   focusFlag.value = false;
 }
-const changeTab=(index:number)=>{
-  activeIndex.value=index
+const changeTab = (index: number) => {
+  activeIndex.value = index;
 }
+onMounted(() => {
+  window.addEventListener('resize', handleResize);
+  handleResize();
+})
+const handleResize = () => {
+  screenWidth.value = document.body.clientWidth;
+};
+watchEffect(() => {
+  if (screenWidth.value >570) {
+    screenWidthFlag.value = true;
+  }else{
+    screenWidthFlag.value = false;
+  }
+})
+// 组件销毁时移除监听器
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize);
+});
 </script>
 
 <style lang="less" scoped>
@@ -79,6 +101,7 @@ const changeTab=(index:number)=>{
   .right {
     flex: 1;
     transition: all .3s;
+
     .input-with-select {
       background: #e6e6e6;
       height: .5rem;
@@ -87,8 +110,9 @@ const changeTab=(index:number)=>{
     :deep(.el-input-group__append, .el-input-group__prepend) {
       padding: 0 .1875rem;
     }
-    :deep(.el-input__inner){
-      font-size:.2rem;
+
+    :deep(.el-input__inner) {
+      font-size: .2rem;
     }
   }
 
@@ -98,22 +122,26 @@ const changeTab=(index:number)=>{
 
   .center {
     flex: 5;
-    font-size:.1875rem;
+    font-size: .1875rem;
     color: black;
     border-left: 1px solid #ccc;
-    .routerTab{
+
+    .routerTab {
       margin-left: .25rem;
-      height:1.0625rem;
+      height: 1.0625rem;
       line-height: 1.0625rem;
       border-bottom: 2px solid transparent;
     }
-    .routerItem{
+
+    .routerItem {
       padding: 0 .25rem;
     }
-    .routerItem:hover{
+
+    .routerItem:hover {
       color: #409eff;
     }
-    .routerActive{
+
+    .routerActive {
       border-color: #409eff;
       color: #409eff;
     }
