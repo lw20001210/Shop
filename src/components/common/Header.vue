@@ -3,20 +3,24 @@
     <div class="left">
       <img class="logoImg" :src="logoPng" alt="" />
     </div>
-    <div class="center">中</div>
+    <div class="center">中
+    </div>
     <div class="right">
-      <!-- <el-input
-        placeholder="请输入内容"
+      <el-input
+        placeholder="关键词"
         v-model="inputContent"
         class="input-with-select"
       >
-      </el-input> -->
+      <template #append><el-icon><Search /></el-icon></template>
+      </el-input>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import logoPng from "../../assets/logos/logo.jpg";
+let inputContent = ref('');
 </script>
 
 <style lang="less" scoped>
@@ -34,7 +38,7 @@ import logoPng from "../../assets/logos/logo.jpg";
 
   .left,
   .right,.center {
-    flex: 1;
+    flex: 2;
     height: 100%;
     display: flex;
     align-items: center;
@@ -50,9 +54,16 @@ import logoPng from "../../assets/logos/logo.jpg";
       border-radius: 50%;
     }
   }
+  .right{
+    flex:3;
+    .input-with-select{
+      background: #e6e6e6;
+      height:.4375rem;
+    }
+  }
 
   .center {
-    flex: 8;
+    flex: 5;
     height: 100%;
   }
 }
