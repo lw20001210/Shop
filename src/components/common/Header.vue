@@ -4,7 +4,7 @@
       <img class="logoImg" :src="logoPng" alt="" />
     </div>
     <div class="center" v-if="screenWidthFlag">
-      <div class="routerTab" @click="changeTab(index)" v-for="(item, index) in routerKeys" :key="item.id"
+      <div class="routerTab" @click="changeTab(index,item.path)" v-for="(item, index) in routerKeys" :key="item.id"
         :class="{ routerActive: index == activeIndex }">
         <div class="routerItem">
           {{ item.text }}
@@ -24,6 +24,8 @@
 <script setup lang="ts">
 import { ref, watchEffect, onMounted, onUnmounted } from 'vue';
 import logoPng from "../../assets/logos/logo.jpg";
+import { useRouter } from 'vue-router'
+const router = useRouter()
 let inputContent = ref('');
 let activeIndex = ref(0);
 let focusFlag = ref(false);
@@ -31,10 +33,10 @@ let screenWidth = ref(0)//屏幕尺寸
 let screenWidthFlag = ref(false);//是否显示路由导航
 
 let routerKeys = ref([
-  { id: 1, text: '首页' },
-  { id: 1, text: '成品分类' },
-  { id: 1, text: '共享软件' },
-  { id: 1, text: '问题/教程' },
+  { id: 1, text: '首页',path:'/home' },
+  { id: 2, text: '成品分类',path:'/sort' },
+  { id: 3, text: '共享软件',path:'/shareware' },
+  { id: 4, text: '问题/教程',path:'/teach' },
 ])
 const inputFocu = () => {
   focusFlag.value = true;
@@ -42,8 +44,9 @@ const inputFocu = () => {
 const inputBlur = () => {
   focusFlag.value = false;
 }
-const changeTab = (index: number) => {
+const changeTab = (index: number,path:string) => {
   activeIndex.value = index;
+  router.push(path);
 }
 onMounted(() => {
   window.addEventListener('resize', handleResize);
@@ -71,12 +74,11 @@ onUnmounted(() => {
   top: 0;
   color: red;
   height: 1.125rem;
-  background-color: pink;
-  display: flex;
   padding: 0 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.5);  
 
   .left,
   .right,
@@ -92,8 +94,8 @@ onUnmounted(() => {
 
     .logoImg {
       object-fit: cover;
-      width: .875rem;
-      height: .875rem;
+      width: 1rem;
+      height: 1rem;
       border-radius: 50%;
     }
   }
@@ -122,10 +124,10 @@ onUnmounted(() => {
 
   .center {
     flex: 5;
-    font-size: .1875rem;
+    font-size: .225rem;
     color: black;
-    border-left: 1px solid #ccc;
-
+    border-left: .0063rem solid #ccc;
+    padding-left: .25rem;
     .routerTab {
       margin-left: .25rem;
       height: 1.0625rem;
