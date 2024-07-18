@@ -105,6 +105,9 @@ const routerPage = (path: string) => {
                 height: 1rem;
                 border-radius: 50%;
             }
+            .img:hover{
+                transform: scale(1.1);
+            }
 
             ul {
                 text-align: center;

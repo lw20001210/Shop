@@ -10,16 +10,18 @@
         </el-input>
       </div>
     </nav>
-    <div class="queryTotalGood">查看所有成品分类</div>
+    <div class="queryTotalGoodBox">
+      <div class="queryTotalGood">点击查看所有成品分类</div>
+    </div>
     <main>
       <div class="navigate">
-        <div class="navigateItem" @click="changeActiveIndex(index)" :class="{ navigateActive: index == currentActiveIndex }"
-          v-for="(item, index) in keysArr" :key="index">
+        <div class="navigateItem" @click="changeActiveIndex(index)"
+          :class="{ navigateActive: index == currentActiveIndex }" v-for="(item, index) in keysArr" :key="index">
           {{ item }}
         </div>
       </div>
       <div class="mainContent">
-       <ShopList></ShopList>
+        <ShopList></ShopList>
       </div>
     </main>
   </div>
@@ -71,16 +73,20 @@ const changeActiveIndex = (index: number) => {
     }
   }
 
-  .queryTotalGood {
-    width: 90%;
-    background-color: #324b4e;
-    height: .5rem;
-    line-height: .5rem;
-    text-align: center;
-    font-size: 12px;
+  .queryTotalGoodBox {
+    padding: 0 10%;
+    margin: .125rem auto .5rem;
     color: #fff;
-    margin: .125rem auto .625rem;
+    .queryTotalGood {
+      background-color: #324b4e;
+      height: .5rem;
+      line-height: .5rem;
+      text-align: center;
+      font-size: 12px;
+      color: #fff;
+    }
   }
+
 
   main {
     padding: 0 10%;
@@ -102,7 +108,7 @@ const changeActiveIndex = (index: number) => {
         align-items: center;
         justify-content: center;
         border-radius: .1rem;
-        font-size: .175rem;
+        font-size: .1875rem;
         transition: all .1s;
       }
 
@@ -116,6 +122,17 @@ const changeActiveIndex = (index: number) => {
         background: #646464;
       }
     }
+  }
+
+  @media (max-width:400px) {
+    main,.queryTotalGoodBox {
+      padding: 0 15px;
+      .navigateItem{
+      font-size: 10px !important;
+    }
+    }
+   
+   
   }
 }
 </style>
