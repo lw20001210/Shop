@@ -8,7 +8,7 @@
         </nav>
         <section>
             <div class="dec">
-                <img class="img" src="../../assets/logos/logo.jpg" alt="" />
+                <img class="img" src="@/assets/logos/logo.jpg" alt="" />
                 <ul>
                     <li>有聊网页制作展示网站</li>
                     <li>有问题请及时联系本网站</li>
@@ -36,6 +36,13 @@
                 </div>
             </div>
         </section>
+        <div class="divice">
+            <el-divider />
+        </div>
+        <div class="footer">
+            <p>本站资源，仅供大家做交流学习之用！获取后请与24小时内删除！如有版权问题，请联系，本站将应您的要求删除！</p>
+            <p>开发者：有聊网页制作 豫ICP备2023027273号-1</p>
+        </div>
     </div>
 </template>
 
@@ -44,7 +51,7 @@ import { ref } from "vue";
 import { useRouter } from 'vue-router'
 const router = useRouter()
 let inputText = ref("");
-const routerPage = (path) => {
+const routerPage = (path:string) => {
     router.push(path);
 }
 </script>
@@ -57,7 +64,7 @@ const routerPage = (path) => {
         align-items: center;
         background: skyblue;
         height: 2.5rem;
-        background: url("../../assets/swiper/swiper1.jpg") no-repeat;
+        background: url("@/assets/swiper/swiper1.jpg") no-repeat;
         background-size: 100%;
         text-align: center;
         color: white;
@@ -113,7 +120,7 @@ const routerPage = (path) => {
             }
 
             ol {
-                line-height:.4375rem;
+                line-height: .4375rem;
             }
         }
 
@@ -123,5 +130,19 @@ const routerPage = (path) => {
             align-items: flex-start;
         }
     }
+
+    .divice {
+        padding: 0 10%;
+    }
+
+    .footer {
+        padding-bottom: .25rem;
+        p {
+            text-align: center;
+            color: #919191;
+            font-size: .1875rem;
+        }
+    }
+
 }
 </style>

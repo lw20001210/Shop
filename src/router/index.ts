@@ -1,13 +1,9 @@
 import { createWebHistory, createRouter } from "vue-router";
-
-import HomeView from "../views/Home/Home.vue";
-import SortView from "../views/Sort/Sort.vue";
-import NotFound from "../views/NotFound/NotFound.vue";
 const routes = [
   { path: "/", redirect: "/home" },
-  { path: "/home", component: HomeView },
-  { path: "/sort", component: SortView },
-  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
+  { path: "/home", component:()=>import("@/views/Home/Home.vue") },
+  { path: "/sort", component:()=>import("@/views/Sort/Sort.vue") },
+  { path: '/:pathMatch(.*)*', name: 'NotFound',  component:()=>import("@/views/NotFound/NotFound.vue") }
 ];
 
 export const router = createRouter({

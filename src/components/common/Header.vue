@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 import { ref, watchEffect, onMounted, onUnmounted } from 'vue';
-import logoPng from "../../assets/logos/logo.jpg";
+import logoPng from "@/assets/logos/logo.jpg";
 import { useRouter } from 'vue-router'
 const router = useRouter()
 let inputContent = ref('');

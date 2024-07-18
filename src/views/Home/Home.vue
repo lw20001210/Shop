@@ -29,7 +29,7 @@ let inputText = ref('');
     align-items: center;
     background: skyblue;
     height: 3.75rem;
-    background: url('../../assets//swiper/swiper1.jpg') no-repeat;
+    background: url('@/assets//swiper/swiper1.jpg') no-repeat;
     background-size: 100%;
     text-align: center;
     color: white;
