@@ -51,7 +51,7 @@ import { ref } from "vue";
 import { useRouter } from 'vue-router'
 const router = useRouter()
 let inputText = ref("");
-const routerPage = (path:string) => {
+const routerPage = (path: string) => {
     router.push(path);
 }
 </script>
@@ -91,7 +91,7 @@ const routerPage = (path:string) => {
         padding: 0 10%;
         display: flex;
         justify-content: space-between;
-        margin: 0.625rem auto;
+        margin: .375rem auto;
 
         .dec {
             display: flex;
@@ -111,7 +111,7 @@ const routerPage = (path:string) => {
                 margin-top: 0.25rem;
                 color: #919191;
                 font-size: 12px;
-                line-height: 30px;
+                line-height: .375rem;
             }
 
             .title {
@@ -131,12 +131,26 @@ const routerPage = (path:string) => {
         }
     }
 
+    @media screen and (max-width: 700px) {
+        section {
+            justify-content: center;
+
+            .dec:nth-child(n+2) {
+                display: none;
+            }
+        }
+    }
+
     .divice {
-        padding: 0 10%;
+         padding: 0 10%;
+        :deep(.el-divider--horizontal){
+            margin:.25rem 0;
+        }
     }
 
     .footer {
         padding-bottom: .25rem;
+
         p {
             text-align: center;
             color: #919191;
