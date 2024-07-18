@@ -17,5 +17,6 @@ import { RouterView } from 'vue-router';
   margin: 0 auto;
   min-width: 375px;
   max-width: 1920px;
+  background: #f6f6f6;
 }
 </style>
