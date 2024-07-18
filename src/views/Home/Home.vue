@@ -54,7 +54,7 @@ let inputText = ref('');
 
   .queryTotalGood {
     width: 90%;
-    background-color: rgb(26, 248, 122);
+    background-color: #324b4e;
     height: .5rem;
     line-height: .5rem;
     text-align: center;

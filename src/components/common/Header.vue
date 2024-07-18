@@ -22,16 +22,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect, onMounted, onUnmounted } from 'vue';
+import { ref, watchEffect} from 'vue';
+import { useScreenSize } from '@/hooks/windowSize';
 import logoPng from "@/assets/logos/logo.jpg";
 import { useRouter } from 'vue-router'
+const { screenWidth } = useScreenSize(); 
 const router = useRouter()
 let inputContent = ref('');
 let activeIndex = ref(0);
 let focusFlag = ref(false);
-let screenWidth = ref(0)//屏幕尺寸
 let screenWidthFlag = ref(false);//是否显示路由导航
-
 let routerKeys = ref([
   { id: 1, text: '首页',path:'/home' },
   { id: 2, text: '成品分类',path:'/sort' },
@@ -48,13 +48,6 @@ const changeTab = (index: number,path:string) => {
   activeIndex.value = index;
   router.push(path);
 }
-onMounted(() => {
-  window.addEventListener('resize', handleResize);
-  handleResize();
-})
-const handleResize = () => {
-  screenWidth.value = document.body.clientWidth;
-};
 watchEffect(() => {
   if (screenWidth.value >570) {
     screenWidthFlag.value = true;
@@ -62,16 +55,13 @@ watchEffect(() => {
     screenWidthFlag.value = false;
   }
 })
-// 组件销毁时移除监听器
-onUnmounted(() => {
-  window.removeEventListener('resize', handleResize);
-});
 </script>
 
 <style lang="less" scoped>
 .header {
   position: sticky;
   top: 0;
+  z-index: 999;
   color: red;
   height: 1.125rem;
   padding: 0 10%;
