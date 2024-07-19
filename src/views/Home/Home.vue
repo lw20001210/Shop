@@ -69,6 +69,7 @@ const changeActiveIndex = (index: number) => {
 
       .search {
         height: .5rem;
+        font-size: .225rem;
       }
     }
   }
@@ -77,6 +78,7 @@ const changeActiveIndex = (index: number) => {
     padding: 0 10%;
     margin: .125rem auto .5rem;
     color: #fff;
+
     .queryTotalGood {
       background-color: #324b4e;
       height: .5rem;
@@ -125,14 +127,25 @@ const changeActiveIndex = (index: number) => {
   }
 
   @media (max-width:400px) {
-    main,.queryTotalGoodBox {
+
+    main,
+    .queryTotalGoodBox {
       padding: 0 15px;
-      .navigateItem{
-      font-size: 10px !important;
+
+      .navigateItem {
+        font-size: 10px !important;
+      }
     }
+
+    .search {
+      height: 26px !important;
     }
-   
-   
+
+   :deep( .el-input-group__append,
+   .el-input-group__prepend) {
+      padding: 0 10px !important;
+      font-size: 14px !important;
+    }
   }
 }
 </style>

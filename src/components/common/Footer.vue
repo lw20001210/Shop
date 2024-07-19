@@ -97,7 +97,7 @@ const routerPage = (path: string) => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 15px;
+            font-size: .1875rem;
 
             .img {
                 object-fit: cover;
@@ -105,7 +105,8 @@ const routerPage = (path: string) => {
                 height: 1rem;
                 border-radius: 50%;
             }
-            .img:hover{
+
+            .img:hover {
                 transform: scale(1.1);
             }
 
@@ -113,13 +114,21 @@ const routerPage = (path: string) => {
                 text-align: center;
                 margin-top: 0.25rem;
                 color: #919191;
-                font-size: 12px;
+                font-size: .15rem;
                 line-height: .375rem;
             }
 
             .title {
                 font-weight: 600;
                 margin-bottom: 0.25rem;
+            }
+
+            .search {
+                .input-with-select {
+                    height: 20px;
+                    font-size:8px;
+                }
+
             }
 
             ol {
@@ -144,10 +153,31 @@ const routerPage = (path: string) => {
         }
     }
 
+    @media screen and (max-width: 380px) {
+        section {
+            margin: 5px auto;
+        }
+
+        ul {
+            font-size: 11px !important;
+            margin-top: 3px !important;
+        }
+
+        :deep(.el-divider--horizontal) {
+            margin: 5px 0 !important;
+        }
+
+        p {
+            padding: 0 10px;
+            font-size: 10px !important;
+        }
+    }
+
     .divice {
-         padding: 0 10%;
-        :deep(.el-divider--horizontal){
-            margin:.25rem 0;
+        padding: 0 10%;
+
+        :deep(.el-divider--horizontal) {
+            margin: .25rem 0;
         }
     }
 
