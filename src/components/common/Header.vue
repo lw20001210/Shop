@@ -69,7 +69,7 @@ watchEffect(() => {
   justify-content: space-between;
   align-items: center;
   background: #fff;
-  box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 5px .125rem -5px rgba(0, 0, 0, 0.5);
 
   .left,
   .right,
