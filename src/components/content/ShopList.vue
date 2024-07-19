@@ -25,17 +25,14 @@
             </div>
         </div>
         <div class="pagination">
-            <el-pagination :size="screenWidthFlag ? 'small' : ''" background layout="prev, pager, next" :total="1000" />
+            <el-pagination size="small" background layout="prev, pager, next" :total="20" />
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watchEffect } from "vue"
+import { ref, onMounted } from "vue"
 import shopPng from "@/assets/shop/shop.png";
-import { useScreenSize } from '@/hooks/windowSize';
-const { screenWidth } = useScreenSize();
-let screenWidthFlag = ref(false);
 let shopList = ref<any[]>([
 
 ])
@@ -57,13 +54,6 @@ const formatDate = (data: string) => {
     return data.split(',')
 }
 
-watchEffect(() => {
-    if (screenWidth.value > 570) {
-        screenWidthFlag.value = false;
-    } else {
-        screenWidthFlag.value = true;
-    }
-})
 </script>
 
 <style lang="less" scoped>
@@ -99,7 +89,7 @@ watchEffect(() => {
                 padding: .025rem .125rem;
                 color: red;
                 background-color: #fcca02;
-                font-size: 13px;
+                font-size: 12px;
                 border-top-left-radius: 5px;
             }
 
@@ -111,7 +101,7 @@ watchEffect(() => {
                     justify-content: space-between;
                     align-items: center;
                     color: #919191;
-                    font-size: 12px;
+                    font-size: .15rem;
 
                     .left {
                         flex: 1;
@@ -121,11 +111,13 @@ watchEffect(() => {
 
                         .elTag {
                             margin-right: 5px;
+                            font-size: .15rem;
+                            height: 12px;
                         }
                     }
 
                     .right {
-                        width: 40px;
+                        width: .5rem;
                         text-align: right;
                     }
 
@@ -134,7 +126,7 @@ watchEffect(() => {
                 .center {
                     margin: .1875rem 0;
                     font-weight: 600;
-                    font-size: 14px;
+                    font-size: .175rem;
                 }
 
                 .bottom {
@@ -142,7 +134,7 @@ watchEffect(() => {
                     justify-content: space-between;
                     align-items: center;
                     padding: 5px 0;
-                    font-size: 12px;
+                    font-size: .15rem;
 
                     .left {
                         color: #919191;
@@ -153,35 +145,87 @@ watchEffect(() => {
                     .right {
                         background: #34495e;
                         color: #fff;
-                        padding: 3px 10px;
+                        padding: 3px .125rem;
                         border-radius: 5px;
                     }
                 }
             }
         }
-        .shopItem:hover{
+
+        .shopItem:hover {
             transform: scale(1.01);
         }
     }
 
-    /* 当屏幕宽度大于600px时，每行显示3个 */
-    @media (min-width: 600px) {
+
+    @media (min-width: 300px) {
+        .money {
+            padding: 2px 8px !important;
+            background-color: #fcca02;
+            font-size: 10px !important;
+        }
+
+        .top {
+            font-size: 11px !important;
+
+            .elTag {
+                font-size: 11px !important;
+                height: 18px !important;
+            }
+
+        }
+
+        .center {
+            font-size: 13px !important;
+        }
+
+        .bottom {
+            font-size: 11px !important;
+
+        }
+    }
+
+    /* 当屏幕宽度大于450px时，每行显示3个 */
+    @media (min-width: 450px) {
         .shopList {
             grid-template-columns: repeat(3, 1fr);
         }
     }
 
-    /* 当屏幕宽度大于900px时，每行显示4个 */
-    @media (min-width: 900px) {
+    /* 当屏幕宽度大于60px时，每行显示4个 */
+    @media (min-width: 600px) {
         .shopList {
             grid-template-columns: repeat(4, 1fr);
         }
     }
 
-    /* 当屏幕宽度大于1200px时，每行显示5个 */
-    @media (min-width: 1200px) {
+    /* 当屏幕宽度大于750px时，每行显示5个 */
+    @media (min-width: 750px) {
         .shopList {
             grid-template-columns: repeat(5, 1fr);
+
+            .money {
+                font-size: 8px !important;
+            }
+
+            .top {
+                font-size: 8px !important;
+
+                .elTag {
+                    font-size: 8px !important;
+                    height: 13px !important;
+                }
+
+            }
+
+            .center {
+                font-size: 10px !important;
+            }
+
+            .bottom {
+                font-size: 8px !important;
+
+            }
         }
     }
 
