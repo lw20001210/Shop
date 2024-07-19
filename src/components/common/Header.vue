@@ -22,12 +22,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue';
+import { ref, watchEffect,onMounted } from 'vue';
 import { useScreenSize } from '@/hooks/windowSize';
 import logoPng from "@/assets/logos/logo.jpg";
-import { useRouter } from 'vue-router'
+import { useRouter,useRoute } from 'vue-router'
 const { screenWidth } = useScreenSize();
-const router = useRouter()
+const router = useRouter();
+const route = useRoute();
 let inputContent = ref('');
 let activeIndex = ref(0);
 let focusFlag = ref(false);
@@ -41,6 +42,9 @@ let routerKeys = ref([
 const inputFocu = () => {
   focusFlag.value = true;
 }
+onMounted(()=>{
+  router.push(route.fullPath)
+})
 const inputBlur = () => {
   focusFlag.value = false;
 }

@@ -71,6 +71,11 @@ const changeActiveIndex = (index: number) => {
         height: .5rem;
         font-size: .225rem;
       }
+
+      :deep(.el-input-group__append,
+        .el-input-group__prepend) {
+        padding: 0 15px !important;
+      }
     }
   }
 
@@ -141,8 +146,8 @@ const changeActiveIndex = (index: number) => {
       height: 26px !important;
     }
 
-   :deep( .el-input-group__append,
-   .el-input-group__prepend) {
+    :deep(.el-input-group__append,
+      .el-input-group__prepend) {
       padding: 0 10px !important;
       font-size: 14px !important;
     }
