@@ -16,21 +16,26 @@
                         {{ item.dec }}
                     </div>
                     <div class="bottom">
-                        <div class="left"><el-icon><Folder /></el-icon>{{ item.size }}M</div>
+                        <div class="left"><el-icon>
+                                <Folder />
+                            </el-icon>{{ item.size }}M</div>
                         <div class="right">{{ item.btnContent }}</div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="pagination">
-            <el-pagination size="small" background layout="prev, pager, next" :total="1000" />
+            <el-pagination :size="screenWidthFlag ? 'small' : ''" background layout="prev, pager, next" :total="1000" />
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue"
+import { ref, onMounted, watchEffect } from "vue"
 import shopPng from "@/assets/shop/shop.png";
+import { useScreenSize } from '@/hooks/windowSize';
+const { screenWidth } = useScreenSize();
+let screenWidthFlag = ref(false);
 let shopList = ref<any[]>([
 
 ])
@@ -51,6 +56,13 @@ onMounted(() => {
 const formatDate = (data: string) => {
     return data.split(',')
 }
+watchEffect(() => {
+    if (screenWidth.value > 570) {
+        screenWidthFlag.value = false;
+    } else {
+        screenWidthFlag.value = true;
+    }
+})
 </script>
 
 <style lang="less" scoped>
@@ -83,7 +95,7 @@ const formatDate = (data: string) => {
                 position: absolute;
                 top: 0;
                 left: 0;
-                padding:.025rem .125rem;
+                padding: .025rem .125rem;
                 color: red;
                 background-color: #fcca02;
                 font-size: 13px;
@@ -92,12 +104,13 @@ const formatDate = (data: string) => {
 
             .content {
                 padding: .125rem .1875rem .25rem;
+
                 .top {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                     color: #919191;
-                    font-size:12px;
+                    font-size: 12px;
 
                     .left {
                         flex: 1;
@@ -116,24 +129,27 @@ const formatDate = (data: string) => {
                     }
 
                 }
-                .center{
+
+                .center {
                     margin: .1875rem 0;
-                    font-weight:600;
+                    font-weight: 600;
                     font-size: 14px;
                 }
 
-                .bottom{
+                .bottom {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                     padding: 5px 0;
                     font-size: 12px;
-                    .left{
+
+                    .left {
                         color: #919191;
                         display: flex;
                         align-items: center;
                     }
-                    .right{
+
+                    .right {
                         background: #34495e;
                         color: #fff;
                         padding: 3px 10px;
