@@ -56,6 +56,7 @@ onMounted(() => {
 const formatDate = (data: string) => {
     return data.split(',')
 }
+
 watchEffect(() => {
     if (screenWidth.value > 570) {
         screenWidthFlag.value = false;
@@ -157,6 +158,9 @@ watchEffect(() => {
                     }
                 }
             }
+        }
+        .shopItem:hover{
+            transform: scale(1.01);
         }
     }
 
