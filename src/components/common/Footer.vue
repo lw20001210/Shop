@@ -126,7 +126,12 @@ const routerPage = (path: string) => {
             .search {
                 .input-with-select {
                     height: 20px;
-                    font-size:8px;
+                    font-size: 8px;
+                }
+
+                :deep(.el-input-group__append,
+                    .el-input-group__prepend) {
+                    padding: 0 5px !important;
                 }
 
             }
