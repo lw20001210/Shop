@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="right" :class="{ active: focusFlag }">
-      <el-input placeholder="关键词" v-model="inputContent" class="input-with-select" @focus="inputFocu" @blur="inputBlur">
+      <el-input placeholder="请输入关键词" v-model="inputContent" class="input-with-select" @focus="inputFocu" @blur="inputBlur">
         <template #append><el-icon>
             <Search />
           </el-icon></template>
@@ -39,12 +39,15 @@ let routerKeys = ref([
   { id: 3, text: '共享软件', path: '/shareware' },
   { id: 4, text: '问题/教程', path: '/teach' },
 ])
-const inputFocu = () => {
-  focusFlag.value = true;
-}
+
 onMounted(()=>{
   router.push(route.fullPath)
 })
+
+const inputFocu = () => {
+  focusFlag.value = true;
+}
+
 const inputBlur = () => {
   focusFlag.value = false;
 }
@@ -53,7 +56,7 @@ const changeTab = (index: number, path: string) => {
   router.push(path);
 }
 watchEffect(() => {
-  if (screenWidth.value > 570) {
+  if (screenWidth.value > 600) {
     screenWidthFlag.value = true;
   } else {
     screenWidthFlag.value = false;
@@ -100,18 +103,21 @@ watchEffect(() => {
   }
 
   .right {
-    flex: 1;
+    flex:1.5;
     transition: all .3s;
 
     .input-with-select {
       background: #e6e6e6;
-      height: .5rem;
+      height:.475rem;
     }
 
     :deep(.el-input-group__append, .el-input-group__prepend) {
-      padding: 0 .1875rem;
+      padding: 0 .15rem;
+      border-radius: 0;
     }
-
+    :deep(.el-input__wrapper){
+      border-radius: 0;
+    }
     :deep(.el-input__inner) {
       font-size: .2rem;
     }
@@ -122,7 +128,7 @@ watchEffect(() => {
   }
 
   .center {
-    flex: 5;
+    flex: 4;
     font-size: .225rem;
     color: black;
     border-left: .0063rem solid #ccc;
@@ -153,6 +159,9 @@ watchEffect(() => {
 @media (max-width:400px) {
   .header {
     padding: 0 15px;
+  }
+  .left{
+    flex: 2 !important;
   }
 }
 </style>
