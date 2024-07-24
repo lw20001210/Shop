@@ -26,6 +26,7 @@ import { ref, watchEffect,onMounted } from 'vue';
 import { useScreenSize } from '@/hooks/windowSize';
 import logoPng from "@/assets/logos/logo.jpg";
 import { useRouter,useRoute } from 'vue-router'
+import { ElLoading } from 'element-plus'
 const { screenWidth } = useScreenSize();
 const router = useRouter();
 const route = useRoute();
@@ -53,7 +54,15 @@ const inputBlur = () => {
 }
 const changeTab = (index: number, path: string) => {
   activeIndex.value = index;
-  router.push(path);
+  const loading = ElLoading.service({
+    text: 'Loading',
+    background: 'rgba(0, 0, 0, 0.7)',
+  })
+  setTimeout(() => {
+    loading.close();
+    router.push(path);
+  },500)
+
 }
 watchEffect(() => {
   if (screenWidth.value > 600) {
