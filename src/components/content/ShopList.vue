@@ -197,28 +197,29 @@ const formatDate = (data: string) => {
         .shopList {
             grid-template-columns: repeat(4, 1fr);
         }
+
         .money {
+            font-size: 8px !important;
+        }
+
+        .top {
+            font-size: 8px !important;
+
+            .elTag {
                 font-size: 8px !important;
+                height: 13px !important;
             }
 
-            .top {
-                font-size: 8px !important;
+        }
 
-                .elTag {
-                    font-size: 8px !important;
-                    height: 13px !important;
-                }
+        .center {
+            font-size: 10px !important;
+        }
 
-            }
+        .bottom {
+            font-size: 8px !important;
 
-            .center {
-                font-size: 10px !important;
-            }
-
-            .bottom {
-                font-size: 8px !important;
-
-            }
+        }
     }
 
     /* 当屏幕宽度大于750px时，每行显示5个 */
@@ -252,7 +253,7 @@ const formatDate = (data: string) => {
     }
 
     .pagination {
-        margin-top: .125rem;
+        margin-top:.1875rem;
         display: flex;
         justify-content: center;
         align-items: center;
