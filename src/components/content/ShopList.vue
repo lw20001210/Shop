@@ -228,26 +228,25 @@ const formatDate = (data: string) => {
             grid-template-columns: repeat(5, 1fr);
 
             .money {
-                font-size: 8px !important;
+                font-size: 12px !important;
             }
 
             .top {
-                font-size: 8px !important;
+                font-size: 12px !important;
 
                 .elTag {
-                    font-size: 8px !important;
-                    height: 13px !important;
+                    font-size: 12px !important;
+                    height: 15px !important;
                 }
 
             }
 
             .center {
-                font-size: 10px !important;
+                font-size: 12px !important;
             }
 
             .bottom {
-                font-size: 8px !important;
-
+                font-size: 12px !important;
             }
         }
     }
