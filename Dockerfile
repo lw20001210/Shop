@@ -1,5 +1,5 @@
 # https://docs.docker.com/samples/library/openjdk/
-FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/node:18.16.1-alpine3.18
+FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/node:18.18.0-alpine-make
 
 COPY . /workspace/src
 
