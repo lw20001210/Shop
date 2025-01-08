@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # 第二阶段：生产环境阶段
-FROM nginx:alpine AS production-stage
+FROM nginx:latest
 
 # 复制 Nginx 配置文件（可选）
 COPY nginx.conf /etc/nginx/conf.d/default.conf
