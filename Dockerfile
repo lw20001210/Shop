@@ -16,7 +16,7 @@ COPY ./make/timezone /etc
 
 RUN rm -rf /etc/nginx/conf.d/default.conf
 COPY make/app.nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=0 /workspace/src/build /workspace/apps
+COPY --from=0 /workspace/src/dist /workspace/apps
 
 WORKDIR /workspace/apps
 EXPOSE 80
