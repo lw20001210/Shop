@@ -5,10 +5,10 @@ COPY . /workspace/src
 
 WORKDIR /workspace/src
 
-RUN rm -rf node_modules \
-    && npm install \
-    && npm run build
-
+# RUN rm -rf node_modules \
+#     && npm install \
+#     && npm run build
+RUN npm run build
 FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/nginx:1.22.0-alpine
 
 COPY ./make/localtime /etc
