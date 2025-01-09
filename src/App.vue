@@ -1,8 +1,7 @@
 <template>
   <div class="container">
-    <Header></Header>
+    <!-- <Header></Header> -->
     <RouterView></RouterView>
-  
    <Footer></Footer>
   </div>
 </template>
