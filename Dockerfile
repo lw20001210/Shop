@@ -1,5 +1,5 @@
 # 使用nginx作为基础镜像
-FROM nginx:latest
+FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/nginx:1.22.0-alpine
  
 # 指定工作目录
 WORKDIR /usr/share/nginx/html
@@ -10,7 +10,7 @@ COPY dist/ .
  
 # 复制自定义的nginx配置文件到容器内，替换默认配置
 # 假设自定义的nginx配置文件名为default.conf
-COPY default.conf /etc/nginx/conf.d/
+# COPY default.conf /etc/nginx/conf.d/
  
 # 暴露nginx服务的默认端口
 EXPOSE 80
