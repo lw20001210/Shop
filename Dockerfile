@@ -6,7 +6,7 @@ WORKDIR /usr/share/nginx/html
  
 # 将构建好的前端项目文件复制到nginx的html目录下
 # 假设前端项目打包后生成的文件夹名为dist
-COPY dist/ .
+# COPY dist/ .
  
 # 复制自定义的nginx配置文件到容器内，替换默认配置
 # 假设自定义的nginx配置文件名为default.conf
