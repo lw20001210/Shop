@@ -9,7 +9,7 @@ RUN rm -rf node_modules \
     && npm install \
     && npm run build
 
-FROM nginx:latest
+FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/nginx:1.22.0-alpine
 
 COPY ./make/localtime /etc
 COPY ./make/timezone /etc
