@@ -3,7 +3,7 @@ FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/nginx:1.22.0-alpine
  
 # 指定工作目录
 WORKDIR /usr/share/nginx/html
- 
+COPY dist /usr/share/nginx/html
 # 将构建好的前端项目文件复制到nginx的html目录下
 # 假设前端项目打包后生成的文件夹名为dist
 # COPY dist/ .
