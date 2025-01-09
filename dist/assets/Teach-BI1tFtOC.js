@@ -1,0 +1,1 @@
+import{S as e}from"./ShopList-BZv9Ajfu.js";import{d as a,o,c,b as t,_ as s}from"./index-C-i3eJ4E.js";const _={class:"containerTeach"},n=a({__name:"Teach",setup(r){return(p,d)=>(o(),c("div",_,[t(e)]))}}),f=s(n,[["__scopeId","data-v-e8ca09b9"]]);export{f as default};
