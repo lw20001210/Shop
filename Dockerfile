@@ -8,7 +8,7 @@ WORKDIR /shop
 COPY package*.json ./
 
 # 安装依赖
-RUN yarn build
+RUN npm install
 
 # 复制源代码
 COPY . .
@@ -23,7 +23,7 @@ FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/nginx:1.22.0-alpine
 WORKDIR /usr/share/nginx/html
 
 # 复制构建后的静态文件
-COPY /shop/dist /usr/share/nginx/html
+COPY shop/dist /usr/share/nginx/html
 
 # 暴露80端口
 EXPOSE 80
