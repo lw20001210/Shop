@@ -1,6 +1,6 @@
 # 构建阶段
-FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/node:18.18.0-alpine-make AS build
-# FROM node:18.18.2
+# FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/node:18.18.0-alpine-make AS build
+FROM node:18.18.2
 # 设置工作目录为项目根目录
 # WORKDIR /shop
 
@@ -11,10 +11,10 @@ FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/node:18.18.0-alpine-make AS b
 # RUN npm install
 
 # 复制源代码
-COPY . .
+# COPY . .
 
-# 构建前端项目
-RUN npm run build
+# # 构建前端项目
+# RUN npm run build
 
 # 生产阶段
 FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/nginx:1.22.0-alpine
