@@ -4,11 +4,11 @@ FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/node:18.18.0-alpine-make AS b
 # 设置工作目录为项目根目录
 WORKDIR /shop
 
-# 复制package.json和package-lock.json (确保缓存的优化)
-COPY package*.json ./
+# # 复制package.json和package-lock.json (确保缓存的优化)
+# COPY package*.json ./
 
-# 安装依赖
-RUN npm install
+# # 安装依赖
+# RUN npm install
 
 # 复制源代码
 COPY . .
