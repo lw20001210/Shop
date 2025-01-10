@@ -1,3 +1,5 @@
+FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/node:18.18.0-alpine-make
+RUN npm run build 
 # 使用nginx作为基础镜像
 FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/nginx:1.22.0-alpine
 
