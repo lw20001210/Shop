@@ -11,7 +11,7 @@ FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/node:18.18.0-alpine-make AS b
 RUN npm install
 
 # 复制源代码
-# COPY . .
+COPY . .
 
 # # 构建前端项目
 RUN npm run build
