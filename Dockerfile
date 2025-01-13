@@ -8,13 +8,13 @@ FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/node:18.18.0-alpine-make AS b
 # COPY package*.json ./
 
 # # 安装依赖
-# RUN npm install
+RUN npm install
 
 # 复制源代码
 # COPY . .
 
 # # 构建前端项目
-# RUN npm run build
+RUN npm run build
 
 # 生产阶段
 FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/nginx:1.22.0-alpine
