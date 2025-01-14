@@ -1,1 +1,0 @@
-import{S as e}from"./ShopList-B00OO7Jm.js";import{d as a,o,c as r,b as t,_ as s}from"./index-CU5isTuX.js";import"./index-D24J-Xf9.js";const c={class:"containerShareWare"},_=a({__name:"ShareWare",setup(n){return(p,i)=>(o(),r("div",c,[t(e)]))}}),h=s(_,[["__scopeId","data-v-2254e024"]]);export{h as default};
