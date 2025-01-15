@@ -7,13 +7,13 @@ FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/node:18.18.0-alpine-make AS b
 # # # 复制package.json和package-lock.json (确保缓存的优化)
 # COPY package*.json ./
 # 复制源代码
-COPY . .
+# COPY . .
 
 # # 安装依赖
-RUN npm install
+RUN rm -rf node_modules \
+    && npm install \
+    && npm run build
 
-# # 构建前端项目
-RUN npm run build
 
 # 生产阶段
 FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/nginx:1.22.0-alpine
