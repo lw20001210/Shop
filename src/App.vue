@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <Header></Header>
-    <!-- <RouterView></RouterView> -->
-    <Footer></Footer>
+    <RouterView></RouterView>
+    <!-- <Footer></Footer> -->
   </div>
 </template>
 <script setup lang="ts">
