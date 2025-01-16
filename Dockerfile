@@ -24,7 +24,7 @@ FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/nginx:1.22.0-alpine
 WORKDIR /usr/share/nginx/html
 # RUN ls -l
 # 复制构建后的静态文件
-COPY shop/dist /usr/share/nginx/html
+COPY dist /usr/share/nginx/html
 
 # 暴露80端口
 EXPOSE 80
