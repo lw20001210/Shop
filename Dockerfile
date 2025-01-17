@@ -3,6 +3,8 @@ FROM registry.cn-zhangjiakou.aliyuncs.com/publicci/node:18.18.0-alpine-make AS b
 # FROM node:18.18.2
 # 设置工作目录为项目根目录,就是会把新项目克隆到这里《因为我项目名就叫shop，没必要再新建一个shop文件夹放shop项目
 # WORKDIR /shop
+COPY . /workspace
+WORKDIR /workspace
 # # # 复制package.json和package-lock.json (确保缓存的优化)
 COPY package*.json ./
 
