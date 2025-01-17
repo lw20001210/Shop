@@ -12,7 +12,7 @@ RUN rm -rf node_modules \
     && npm install 
 
 # 复制源代码
-COPY . .
+# COPY . .
 RUN npm run build
 
 
