@@ -2,8 +2,8 @@
   <div class="container">
     <Header></Header>
     <RouterView></RouterView>
-  
-   <Footer></Footer>
+    <h1>Hello World,我是test!</h1>
+    <Footer></Footer>
   </div>
 </template>
 <script setup lang="ts">

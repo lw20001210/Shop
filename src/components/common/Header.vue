@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="left">
-      <img class="logoImg" :src="logoPng" alt="" />
+      <img class="logoImg" :src="logoJpg" alt="" />
     </div>
     <div class="center" v-if="screenWidthFlag">
       <div class="routerTab" @click="changeTab(index, item.path)" v-for="(item, index) in routerKeys" :key="item.id"
@@ -12,7 +12,8 @@
       </div>
     </div>
     <div class="right" :class="{ active: focusFlag }">
-      <el-input placeholder="请输入关键词" v-model="inputContent" class="input-with-select" @focus="inputFocu" @blur="inputBlur">
+      <el-input placeholder="请输入关键词" v-model="inputContent" class="input-with-select" @focus="inputFocu"
+        @blur="inputBlur">
         <template #append><el-icon>
             <Search />
           </el-icon></template>
@@ -22,10 +23,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect,onMounted } from 'vue';
+import { ref, watchEffect, onMounted } from 'vue';
 import { useScreenSize } from '@/hooks/windowSize';
-import logoPng from "@/assets/logos/logo.jpg";
-import { useRouter,useRoute } from 'vue-router'
+import logoJpg from "@/assets/logos/logo.jpg";
+import { useRouter, useRoute } from 'vue-router'
 import { ElLoading } from 'element-plus'
 const { screenWidth } = useScreenSize();
 const router = useRouter();
@@ -41,7 +42,7 @@ let routerKeys = ref([
   { id: 4, text: '问题/教程', path: '/teach' },
 ])
 
-onMounted(()=>{
+onMounted(() => {
   router.push(route.fullPath)
 })
 
@@ -61,7 +62,7 @@ const changeTab = (index: number, path: string) => {
   setTimeout(() => {
     loading.close();
     router.push(path);
-  },500)
+  }, 500)
 
 }
 watchEffect(() => {
@@ -112,21 +113,23 @@ watchEffect(() => {
   }
 
   .right {
-    flex:1.5;
+    flex: 1.5;
     transition: all .3s;
 
     .input-with-select {
       background: #e6e6e6;
-      height:.475rem;
+      height: .475rem;
     }
 
     :deep(.el-input-group__append, .el-input-group__prepend) {
       padding: 0 .15rem;
       border-radius: 0;
     }
-    :deep(.el-input__wrapper){
+
+    :deep(.el-input__wrapper) {
       border-radius: 0;
     }
+
     :deep(.el-input__inner) {
       font-size: .2rem;
     }
@@ -169,7 +172,8 @@ watchEffect(() => {
   .header {
     padding: 0 15px;
   }
-  .left{
+
+  .left {
     flex: 2 !important;
   }
 }
